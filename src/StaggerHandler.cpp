@@ -172,9 +172,9 @@ namespace MaxsuPoise
 		return result;
 	}
 
-	bool ImmuneLevelCalculator::HasActiveEffectWithKeyword(RE::MagicTarget* a_target, RE::BGSKeyword* a_keyword)
+	bool ImmuneLevelCalculator::HasActiveEffectWithKeyword(RE::Actor* a_target, RE::BGSKeyword* a_keyword)
 	{
-		for (const auto effect : *(a_target->GetActiveEffectList())) {
+		for (const auto effect : *(a_target->AsMagicTarget()->GetActiveEffectList())) {
 			if (effect->GetBaseObject()->HasKeyword(a_keyword) && (effect->conditionStatus.get() == RE::ActiveEffect::ConditionStatus::kTrue))
 				return true;
 		}

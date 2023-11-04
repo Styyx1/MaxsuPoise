@@ -25,10 +25,10 @@ namespace MaxsuPoise
 
 	float GetActorMass(RE::Actor* a_target)
 	{
-		if (!a_target || !a_target->race)
+		if (!a_target || !a_target->GetActorRuntimeData().race)
 			return 0.f;
 
-		return a_target->race->data.baseMass;
+		return a_target->GetActorRuntimeData().race->data.baseMass;
 	}
 
 	void CPrint(const char* a_fmt, ...)

@@ -1,14 +1,20 @@
 {
-    "name":  "maxsupoise",
-    "version-string":  "1.0.0",
-    "description":  "",
-    "license":  "MIT",
-    "dependencies":  [
-                         "spdlog"
-                     ],
-    "features":  {
-                     "mo2-install":  {
-                                         "description":  "MaxsuPoise"
-                                     }
-                 }
+  "name": "maxsupoise",
+  "version-string": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "dependencies": [
+    "spdlog",
+    "rsm-binary-io",
+    "xbyak",
+    "rapidcsv",
+    "tomlplusplus",
+    "nlohmann-json",
+    "simpleini"
+  ],
+  "features": {
+    "mo2-install": {
+      "description": "MaxsuPoise"
+    }
+  }
 }

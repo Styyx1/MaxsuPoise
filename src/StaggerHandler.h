@@ -29,7 +29,7 @@ namespace MaxsuPoise
 	{
 	public:
 		static StaggerLevel GetTotalImmuneLevel(RE::Actor* a_target);
-		static bool HasActiveEffectWithKeyword(RE::MagicTarget* a_target, RE::BGSKeyword* a_keyword);
+		static bool HasActiveEffectWithKeyword(RE::Actor* a_target, RE::BGSKeyword* a_keyword);
 
 	private:
 		ImmuneLevelCalculator() = delete;

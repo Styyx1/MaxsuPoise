@@ -3,7 +3,7 @@
 
 namespace MaxsuPoise
 {
-	static constexpr char FileName[] = R"(Data\SKSE\Plugins\MaxsuPoise.ini)";
+	static constexpr char FileName[] = R"(Data\\SKSE\\Plugins\\MaxsuPoise.ini)";
 
 	bool SettingsHandler::Register()
 	{
