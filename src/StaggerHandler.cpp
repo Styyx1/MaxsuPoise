@@ -158,7 +158,7 @@ namespace MaxsuPoise
 			if (!keyword)
 				continue;
 
-			if (a_target->HasKeyword(keyword) || HasActiveEffectWithKeyword(a_target, keyword)) {
+			if (a_target->HasKeyword(keyword) || HasActiveEffectWithKeyword(a_target->AsMagicTarget(), keyword)) {
 				if (pair.second > result)
 					result = pair.second;
 			}
@@ -192,7 +192,7 @@ namespace MaxsuPoise
 		RE::BSAnimationGraphManagerPtr graphMgr;
 		if (a_actor->GetAnimationGraphManager(graphMgr) && graphMgr) {
 			auto behaviourGraph = graphMgr->graphs[0] ? graphMgr->graphs[0]->behaviorGraph : nullptr;
-			auto activeNodes = behaviourGraph ? behaviourGraph->activeNodes : nullptr;
+			auto activeNodes = behaviourGraph ? reinterpret_cast<RE::hkArray<RE::hkbNodeInfo>*>(behaviourGraph->activeNodes.get()) : nullptr;
 			if (activeNodes) {
 				for (auto nodeInfo : *activeNodes) {
 					auto nodeClone = nodeInfo.nodeClone;

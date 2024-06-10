@@ -1,4 +1,4 @@
-#include "HitEventHandler.h"
+#include "Hooks/HitEventHandler.h"
 #include "StaggerHandler.h"
 
 namespace MaxsuPoise

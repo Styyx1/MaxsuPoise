@@ -1,4 +1,4 @@
-#include "MagicStaggerHook.h"
+#include "Hooks/MagicStaggerHook.h"
 #include "StaggerHandler.h"
 
 namespace MaxsuPoise

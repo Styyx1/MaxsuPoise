@@ -4,7 +4,7 @@
 namespace MaxsuPoise
 {
 	using WEAPON_TYPE = RE::WEAPON_TYPE;
-	using BipedSlot = RE::BipedObjectSlot;
+	using BipedSlot = RE::BGSBipedObjectForm::BipedObjectSlot;
 	using EventResult = RE::BSEventNotifyControl;
 
 	class SettingsHandler : public RE::BSTEventSink<SKSE::ModCallbackEvent>
@@ -16,7 +16,7 @@ namespace MaxsuPoise
 		static constexpr char modName[] = "MaxsuPoise";
 		static bool Register();
 
-		virtual EventResult ProcessEvent(const SKSE::ModCallbackEvent* a_event, RE::BSTEventSource<SKSE::ModCallbackEvent>* a_eventSource)
+		virtual EventResult ProcessEvent(const SKSE::ModCallbackEvent* a_event, RE::BSTEventSource<SKSE::ModCallbackEvent>*)
 		{
 			if (a_event && _strcmpi(a_event->eventName.c_str(), "dmenu_updateSettings") == 0 && _strcmpi(a_event->strArg.c_str(), modName) == 0) {
 				UpdateWeapTypeMult();
