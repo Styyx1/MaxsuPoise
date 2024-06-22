@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(MaxsuPoise VERSION 0.3.2 LANGUAGES CXX)
+project(MaxsuPoise VERSION 0.3.4 LANGUAGES CXX)
 
 # Set your project version and specify C++ standard
 set(CMAKE_CXX_STANDARD 23)
