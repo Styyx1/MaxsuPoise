@@ -1,6 +1,7 @@
 #include "PoiseHealthHandler.h"
 #include "SettingsHandler.h"
 #include "Utils.h"
+#include "PoiseAVHUD.h"
 
 namespace MaxsuPoise
 {
@@ -8,6 +9,11 @@ namespace MaxsuPoise
 
 	float PoiseHealthHandler::GetCurrentPoiseHealth(RE::Actor* a_target)
 	{
+
+		if (PoiseAVHUD::GetSingleton()->trueHUDInterface) {
+			PoiseAVHUD::GetSingleton()->trueHUDInterface->FlashActorSpecialBar(SKSE::GetPluginHandle(), a_target->GetHandle(), false);
+		}
+
 		float result = 0.f;
 		if (!a_target || !a_target->GetGraphVariableFloat(CURRENT_POISE_HEALTH_GV, result))
 			WARN("Not Graph Variable Float Found: {}", CURRENT_POISE_HEALTH_GV);
@@ -17,6 +23,9 @@ namespace MaxsuPoise
 
 	bool PoiseHealthHandler::SetCurrentPoiseHealth(RE::Actor* a_target, const float& a_in)
 	{
+		if (PoiseAVHUD::GetSingleton()->trueHUDInterface) {
+			PoiseAVHUD::GetSingleton()->trueHUDInterface->FlashActorSpecialBar(SKSE::GetPluginHandle(), a_target->GetHandle(), false);
+		}
 		return a_target && a_target->SetGraphVariableFloat(CURRENT_POISE_HEALTH_GV, a_in);
 	}
 

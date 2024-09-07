@@ -1,6 +1,7 @@
 #include "Hooks/PoiseRegenHandler.h"
 #include "PoiseHealthHandler.h"
 #include "Utils.h"
+#include "PoiseAVHUD.h"
 
 namespace MaxsuPoise
 {
@@ -37,9 +38,14 @@ namespace MaxsuPoise
 			auto staggerProtectTimer = StaggerProtectHandler::GetStaggerProtectTimer(a_target);
 			if (staggerProtectTimer > 0.f)
 				StaggerProtectHandler::SetStaggerProtectTimer(a_target, staggerProtectTimer - a_delta);
-		}
+		}		
 
 		PoiseHealthHandler::SetCurrentPoiseHealth(a_target, currentPoiseHealth);
+		if (PoiseAVHUD::trueHUDInterface) {
+			if (PoiseAVHUD::trueHUDInterface->RequestSpecialResourceBarsControl(SKSE::GetPluginHandle()) == TRUEHUD_API::APIResult::OK) {
+				PoiseAVHUD::trueHUDInterface->RegisterSpecialResourceFunctions(SKSE::GetPluginHandle(), PoiseAVHUD::GetCurrentSpecial, PoiseAVHUD::GetMaxSpecial, true);
+			}
+		}
 	}
 
 	float PoiseRegenHandler::GetPoiseRegenRate()

@@ -1,5 +1,7 @@
 #include "SettingsHandler.h"
 #include "SimpleIni.h"
+#include "PoiseAVHUD.h"
+#include "TrueHUDAPI.h"
 
 namespace MaxsuPoise
 {
@@ -9,7 +11,7 @@ namespace MaxsuPoise
 	{
 		UpdateWeapTypeMult();
 		InitArmorSlotMult();
-
+		LoadHUD();
 		static SettingsHandler singleton;
 		auto eventSource = SKSE::GetModCallbackEventSource();
 		if (!eventSource) {
@@ -22,6 +24,15 @@ namespace MaxsuPoise
 		INFO("Register {}", typeid(singleton).name());
 
 		return true;
+	}
+
+	void SettingsHandler::LoadHUD() 
+	{
+		if (PoiseAVHUD::trueHUDInterface) {
+			if (PoiseAVHUD::trueHUDInterface->RequestSpecialResourceBarsControl(SKSE::GetPluginHandle()) == TRUEHUD_API::APIResult::OK) {
+				PoiseAVHUD::trueHUDInterface->RegisterSpecialResourceFunctions(SKSE::GetPluginHandle(), PoiseAVHUD::GetCurrentSpecial, PoiseAVHUD::GetMaxSpecial, true);
+			}
+		}
 	}
 
 	void SettingsHandler::UpdateWeapTypeMult()

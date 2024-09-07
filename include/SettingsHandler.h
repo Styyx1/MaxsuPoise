@@ -27,7 +27,7 @@ namespace MaxsuPoise
 
 	private:
 		SettingsHandler() = default;
-
+		static void LoadHUD();
 		static void UpdateWeapTypeMult();
 		static void InitArmorSlotMult();
 	};

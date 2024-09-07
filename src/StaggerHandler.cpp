@@ -31,6 +31,9 @@ namespace MaxsuPoise
 		if (!aggressor)
 			return;
 
+		if (!target->Is3DLoaded() || !aggressor->Is3DLoaded())
+			return;
+
 		auto staggerProtectTime = StaggerProtectHandler::GetStaggerProtectTimer(target);
 		if (staggerProtectTime > 0.f && target->IsStaggering())
 			return;
@@ -160,12 +163,15 @@ namespace MaxsuPoise
 		if (!a_target)
 			return result;
 
+		if (!a_target->Is3DLoaded())
+			return result;
+
 		for (auto& pair : ImmuneKeywordMap) {
 			auto keyword = RE::TESForm::LookupByEditorID<RE::BGSKeyword>(pair.first);
 			if (!keyword)
 				continue;
 
-			if (a_target->HasKeyword(keyword) || HasActiveEffectWithKeyword(a_target->AsMagicTarget(), keyword)) {
+			if (a_target;  a_target->HasKeyword(keyword) || HasActiveEffectWithKeyword(a_target->AsMagicTarget(), keyword)) {
 				if (pair.second > result)
 					result = pair.second;
 			}
